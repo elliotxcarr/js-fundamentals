@@ -13,7 +13,7 @@ const launchCraft = () => {
   console.log('take off');
 }
 
-// simple method call/facade
+// simple method call (facade)
 launchCraft();
 
 

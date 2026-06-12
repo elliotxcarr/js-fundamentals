@@ -1,5 +1,23 @@
 //////////////////////////////////////// NON-BLOCKING EVENT LOOP ///////////////////////////////////////////////////////
-// Javascript can only handle a single task at a time
+
+
+// Javascript can only handle a single task at a time (single threaded)
+// How can it handle thousands of network requests?
+
+// Runtime consists of:
+
+// JavaScript Engine (V8)
+// ↓
+// Call Stack
+// ↓
+// Web APIs / Node APIs
+// ↓
+// Task Queues
+// ↓
+// Event Loop
+
+// Fun fact: fetch() and setTimeout() are NOT part of javascript itself
+// they are provided by node.js and browser APIs
 
 setTimeout(() => {
   console.log('1');
@@ -28,7 +46,7 @@ Promise.resolve().then(() => {
 // |   setTimeout()       |  |  () => console.log('1')   | // callback from setTimeout
 // |______________________|  |___________________________| // waits for 1000 ms
 //          ^
-//          |                _______Task Queue________
+//          |                ___(Macro)Task Queue_____
 //          |               | () => console.log('1')  | // after 1000ms added to task queue
 //          |---------->    |                         |
 //          |               |                         |
