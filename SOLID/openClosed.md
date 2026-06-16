@@ -1,9 +1,7 @@
-// Open/Closed
+## Open/Closed
+Software entites should be open for extension but closed for modification. If someone wants to extend a modules behaviour, they wont need to modify existing code that they dont want to
 
-// Software entites should be open for extension but closed for modification
-// If someone wants to extend a modules behaviour, they wont need to
-// modify existing code that they dont want to
-
+```js
 const employees = [
   {
     name: 'John',
@@ -22,8 +20,11 @@ const employees = [
     level: 'lead',
   },
 ]
+```
 
-// BAD
+BAD:
+
+```js
 const calculateSalary = (employee) => {
   const BASE = 130000;
   switch (employee.level) {
@@ -42,13 +43,16 @@ const calculateSalary = (employee) => {
     // Open/close principle must be broken here to accomodate new level
   }
 }
-// This will break when trying to calculate Debbies salary as there is
-// no case for 'lead' level
-// { name: 'Debbie', level: 'lead', salary: undefined }
+```
 
+This will break when trying to calculate Debbies salary as there is no case for 'lead' level
+```js
+{ name: 'Debbie', level: 'lead', salary: undefined }
+```
 
-// GOOD (behavior driven)
+GOOD (behavior driven):
 
+```js
 const employees = [
   {
     name: 'John',
@@ -104,11 +108,12 @@ employees.forEach(employee => {
   employee.salary = calculateSalary(employee)
   console.log(employee)
 })
-// To add a new level, create a new class and calculateSalary remains unchanged
-// Removes brittle switch statment
+```
+To add a new level, create a new class and calculateSalary remains unchanged. This removes the brittle switch statment
 
+Another example (Data driven):
 
-// OR (Data driven)
+```js
 const salaryAdjusters = new Map([
   ['junior', 1000],
   ['mid', 3000],
@@ -128,11 +133,10 @@ const registerSalaryLevel = (level, amount) => {
 
 registerSalaryLevel('lead', 7000);
 
-// This removes brittle switch statement
-// It allows new levels to be added without modifying calculateSalary()
-// This is a data-driven example
-
 employees.forEach(employee => {
   employee.salary = calculateSalary(employee)
   console.log(employee)
 })
+```
+
+Here we allow a new salary level to be added dynamically
