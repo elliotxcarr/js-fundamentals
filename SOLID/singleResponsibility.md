@@ -1,4 +1,4 @@
-## Single Responsibility
+## Single Responsibility Principle
 
 The Single Responsibility principle states that every class should only have one reason to change
 This helps developers understand the context and responsibility of what theyre building and when there is a need to change

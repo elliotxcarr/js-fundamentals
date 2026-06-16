@@ -1,4 +1,4 @@
-## Open/Closed
+## Open/Closed Principle
 Software entites should be open for extension but closed for modification. If someone wants to extend a modules behaviour, they wont need to modify existing code that they dont want to
 
 ```js
