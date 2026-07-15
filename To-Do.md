@@ -13,3 +13,9 @@
 
 - Present Lunch and Learn
 - Make syllabus mark down
+
+## Meeting: 25/06/2026
+
+- What design pattern is used for open/closed example
+- Design agent for planning new features with claude
+- Design execution agent for implementing planning agent plans with claude

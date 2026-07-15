@@ -1,9 +1,12 @@
-// The observer pattern allows many objects to subscribe to events
-// that are broadcasted by another object
+## Observer Pattern
 
-// E.g. Radio tower which broadcasts a signal, which many recievers can pick up
+The observer pattern allows many objects to subscribe to events that are broadcasted by another object.
 
-/////////// Bare javascript example ///////////
+ E.g. Radio tower which broadcasts a signal, which many recievers can pick up
+
+Plain JavaScript:
+
+```js
 const Subject = function() {
   let observers = [];
 
@@ -39,21 +42,23 @@ const observer1 = new Observer(1);
 
 subject.subscribeObserver(observer1);
 subject.notifyObserver(observer1);
+```
 
-
-/////////// Example with RXJS ///////////
+Using RXJS:
+```js
 
 import { Subject } from 'rxjs';
 
 const news = new Subject();
 
-// here the callback within subscribe() is the observer which will receive outputs
-// emitted by the subject
+// here the callback within subscribe() is the observer which will receive outputs emitted by the subject
+
 const tv1 = news.subscribe(v => console.log(`${v} - Lobby TV`));
 const tv2 = news.subscribe(v => console.log(`${v} - Bar TV`));
 const tv3 = news.subscribe(v => console.log(`${v} - Room 201 TV`));
 
-// the next() method emits the passed value, and every subscribers
-// (tv1, tv2, tv3) callback runs
+// the next() method emits the passed value, and every subscribers (tv1, tv2, tv3) callback runs
+
 news.next('Breaking news...');
 news.next('Latest on weather...');
+```

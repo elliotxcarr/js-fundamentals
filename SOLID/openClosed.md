@@ -104,12 +104,18 @@ const calculateSalary = (employee) => {
   const BASE = 130000;
   return employee.level.calcSalary(BASE);
 }
+
 employees.forEach(employee => {
   employee.salary = calculateSalary(employee)
   console.log(employee)
 })
+
 ```
 To add a new level, create a new class and calculateSalary remains unchanged. This removes the brittle switch statment
+
+This also implements the Strategy pattern 
+- it uses a family of interchangeable algorithms (level classes) each with the same interface (calcSalary)
+- Uses a context (calculateSalary) that will use the strategy the object holds (JuniorLevel, SeniorLevel etc.)
 
 Another example (Data driven):
 
